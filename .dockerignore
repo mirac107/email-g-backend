@@ -7,4 +7,6 @@ npm-debug.log
 README.md
 .DS_Store
 *.log
+.vscode
+.idea
 

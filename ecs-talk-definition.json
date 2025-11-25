@@ -1,0 +1,47 @@
+{
+  "family": "email-service-server",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512",
+  "containerDefinitions": [
+    {
+      "name": "email-service-server",
+      "image": "YOUR_ECR_REPO_URI:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "protocol": "tcp"
+        },
+        {
+          "containerPort": 2525,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        {
+          "name": "PORT",
+          "value": "8080"
+        },
+        {
+          "name": "SMTP_PORT",
+          "value": "2525"
+        },
+        {
+          "name": "NODE_ENV",
+          "value": "production"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/email-service-server",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}
+

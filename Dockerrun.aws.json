@@ -1,0 +1,26 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "email-service-server",
+    "Update": "true"
+  },
+  "Ports": [
+    {
+      "ContainerPort": "8080"
+    },
+    {
+      "ContainerPort": "2525"
+    }
+  ],
+  "Environment": [
+    {
+      "Name": "PORT",
+      "Value": "8080"
+    },
+    {
+      "Name": "SMTP_PORT",
+      "Value": "2525"
+    }
+  ]
+}
+
